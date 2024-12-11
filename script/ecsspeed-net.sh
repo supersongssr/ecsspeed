@@ -298,6 +298,7 @@ speed_test() {
             fi
         fi
     fi
+    echo "${nodeName}"="${up_speed}" >> ~/node_speed_output.log #输出到文件
 }
 
 test_list() {
@@ -638,7 +639,7 @@ checkerror() {
 main() {
     rm -rf ./speedtest-cli/speedlog.txt
     preinfo
-    selecttest
+    selection=1 #selecttest #这里换成1直接自动获取
     start_time=$(date +%s)
     runtest
 }
@@ -650,12 +651,12 @@ checkcurl
 checkwget
 checktar
 check_cdn_file
-check_china
+# check_china
 speedtest_ver="1.2.0"
 install_speedtest
 checkver
 statistics_of_run-times
 main
-checkerror
+# checkerror
 print_end_time
-global_exit
+# global_exit
